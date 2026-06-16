@@ -1,0 +1,72 @@
+@font-face {
+	font-family: 'DM-Sans';
+	src: url('./fonts/DM_Sans/DMSans-VariableFont_opsz,wght.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: 'Bricolage';
+	src: url('./fonts/Bricolage_Grotesque/BricolageGrotesque-VariableFont_opsz,wdth,wght.ttf') format('truetype');
+}
+
+/* ===== Reset ===== */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 62.5%;
+    -webkit-text-size-adjust: 100%;
+}
+
+img, video, svg {
+    display: block;
+    max-width: 100%;
+}
+
+input, button, textarea, select {
+    font: inherit;
+}
+
+ul, ol {
+    list-style: none;
+}
+
+/* ===== Tokens ===== */
+:root {
+    --neutral-900: hsl(243, 96%, 9%);
+    --neutral-800: hsl(243, 27%, 20%);
+    --neutral-700: hsl(243, 23%, 24%);
+    --neutral-600: hsl(243, 23%, 30%);
+    --neutral-300: hsl(240, 6%, 70%);
+    --neutral-200: hsl(250, 6%, 84%);
+    --neutral-0: hsl(0, 0%, 100%);
+
+    --orange-500: hsl(28, 100%, 52%);
+
+    --blue-500: hsl(233, 67%, 56%);
+    --blue-700: hsl(248, 70%, 36%);
+
+    --font-sans: 'DM-Sans', sans-serif;
+    --font-bricolage: 'Bricolage', sans-serif;
+}
+
+body {
+    background-color: var(--neutral-900);
+    font-family: var(--font-sans);
+    color: var(--neutral-0);
+    padding: 1.6rem 1.6rem 4.8rem 1.6rem;
+}
+
+@media(min-width: 768px){
+    body{
+        padding: 2.4rem 2.4rem 8rem 2.4rem;
+    }
+}
+
+@media(min-width: 1024px){
+    body{
+        padding: 4.8rem 11.2rem 8rem 11.2rem;
+    }
+}

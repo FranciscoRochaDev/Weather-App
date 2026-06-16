@@ -3,6 +3,7 @@ function App() {
 
   return (
     <>
+        <h1>Componente de Prueba</h1>
     </>
   )
 }
