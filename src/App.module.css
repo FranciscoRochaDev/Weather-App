@@ -1,0 +1,44 @@
+
+.container{
+    display: flex;
+    flex-direction: column;
+    gap: 4.8rem;
+}
+
+@media(min-width: 1024px){
+    .container{
+        gap: 6.4rem;
+    }
+}
+
+.title{
+    font-family: var(--font-bricolage);
+    font-weight: 900;
+    font-size: 5.2rem;
+    text-align: center;
+    color: var(--neutral-0);
+}
+
+.br_mobile {
+    display: block;
+}
+
+.br_tablet {
+    display: none;
+}
+
+@media (min-width: 768px) {
+    .br_mobile {
+        display: none;
+    }
+
+    .br_tablet {
+        display: block;
+    }
+}
+
+@media (min-width: 1024px) {
+    .br_tablet {
+        display: none;
+    }
+}
