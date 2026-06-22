@@ -1,5 +1,6 @@
 import Header from "./components/Header/Header"
 import styles from './App.module.css'
+import SearchBar from "./components/SearchBar/SearchBar"
 
 function App() {
 
@@ -9,6 +10,9 @@ function App() {
         <h1 className={styles.title}>
             How’s the <br className={styles.br_mobile} />sky <br className={styles.br_tablet} />looking <br className={styles.br_mobile} />today?
         </h1>
+        <main>
+            <SearchBar />
+        </main>
     </div>
   )
 }
