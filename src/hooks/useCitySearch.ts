@@ -4,9 +4,7 @@
  *  Donde accedemos a restult y de ahi obtenemos latitude Y longitude
  */
 
-
-import { useEffect, useState, type ChangeEvent } from "react"
-import { useDebounce } from "use-debounce"
+import { useState, type ChangeEvent } from "react"
 import type { SearchCity } from "../interfaces"
 import axios from "axios"
 import useWeather from "./useWeather";
@@ -17,11 +15,8 @@ export default function useCitySearch() {
     const { fetchWeather } = useWeather()
 
     const [text, setText] = useState('')
-    const [debounceText] = useDebounce(text, 300)
-
-    useEffect(() => {
-        console.log('Consultando....')
-    }, [debounceText])
+    const [error, setError] = useState('')
+    const [loading, setLoading] = useState(false)
 
     const handleSearch = (e : ChangeEvent<HTMLInputElement>) => {
         setText(e.target.value)
@@ -31,24 +26,28 @@ export default function useCitySearch() {
 
         const appId = import.meta.env.VITE_API_GEOCODING
 
+        setLoading(true)
+        setError('')
+
         try {
 
             const baseUrl = `${appId}name=${city.nameCity}&count=10&language=en&format=json`
             const response = await axios(baseUrl)
-            console.log(response.data)
 
-            // Validar que exista
             if (!response.data.results) {
-                throw new Error('Ciudad no encontrada')
+                setError('Ciudad no encontrada')
+                return
             }
 
             const lat = response.data.results[0].latitude
             const lon = response.data.results[0].longitude
 
-            console.log(fetchWeather({ lat, lon }))
+            await fetchWeather({ lat, lon })
 
-        } catch (error) {
-            console.log(error)
+        } catch {
+            setError('Error al conectarse al servidor')
+        } finally {
+            setLoading(false)
         }
 
     }
@@ -56,6 +55,8 @@ export default function useCitySearch() {
     return {
         text,
         handleSearch,
-        fetchCity
+        fetchCity,
+        error,
+        loading
     }
 }

@@ -90,3 +90,29 @@
         width: 18%;
     }
 }
+
+.loading{
+    display: flex;
+    gap: 3rem;
+    align-items: center;
+    width: 100%;
+    background-color: var(--neutral-800);
+    padding: 1rem;
+    border-radius: 1.2rem;
+    border: .1rem solid var(--neutral-700);
+    margin-top: 1.6rem;
+}
+
+@media(min-width: 768px){
+    .loading{
+        max-width: 73rem;
+        margin-inline: auto;
+    }
+}
+
+.loading_text{
+    font-size: 1.6rem;
+    font-weight: 400;
+    text-align: left;
+    color: var(--neutral-0);
+}
