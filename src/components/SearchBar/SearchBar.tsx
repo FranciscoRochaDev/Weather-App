@@ -2,10 +2,11 @@ import type { MouseEvent } from 'react'
 import useCitySearch from '../../hooks/useCitySearch'
 import Loading from '../Loading/Loading'
 import styles from './SearchBar.module.css'
+import CityDrop from '../CityDrop/CityDrop'
 
 export default function SearchBar() {
 
-    const { text, handleSearch, fetchCity, loading } = useCitySearch()
+    const { text, handleSearch, fetchCity, loading, cities } = useCitySearch()
 
     const handleClick = (e: MouseEvent<HTMLButtonElement>) => {
         e.preventDefault()
@@ -31,12 +32,13 @@ export default function SearchBar() {
                     Search
                 </button>
             </div>
-            { loading && 
+            { loading &&
                 <div className={styles.loading}>
                     <Loading />
                     <p className={styles.loading_text}>Search in progress</p>
-                </div> 
+                </div>
             }
+            {cities && <CityDrop cities={cities} /> }
         </>
     )
 

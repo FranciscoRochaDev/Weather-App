@@ -1,6 +1,6 @@
 
 export interface SearchCity {
-    nameCity: string
+    nameCity: string;
 }
 
 export interface UnitOptios {
@@ -9,12 +9,18 @@ export interface UnitOptios {
 }
 
 export interface UnitCategory {
-    category: 'temperature' | 'windspeed' | 'precipitation'
-    label: string
-    options: UnitOptios[]
+    category: 'temperature' | 'windspeed' | 'precipitation';
+    label: string;
+    options: UnitOptios[];
 }
 
 export interface Coordinates {
-    lat: number,
-    lon: number
+    lat: number;
+    lon: number;
+}
+
+export interface Cities {
+    id: number;
+    name: string;
+    country_code: string;
 }

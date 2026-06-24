@@ -5,7 +5,7 @@
  */
 
 import { useState, type ChangeEvent } from "react"
-import type { SearchCity } from "../interfaces"
+import type { Cities, SearchCity } from "../interfaces"
 import axios from "axios"
 import useWeather from "./useWeather";
 
@@ -17,6 +17,7 @@ export default function useCitySearch() {
     const [text, setText] = useState('')
     const [error, setError] = useState('')
     const [loading, setLoading] = useState(false)
+    const [cities, setCities] = useState<Cities[]>()
 
     const handleSearch = (e : ChangeEvent<HTMLInputElement>) => {
         setText(e.target.value)
@@ -39,10 +40,14 @@ export default function useCitySearch() {
                 return
             }
 
+            setCities(response.data.results)
+            console.log(response.data.results)
+
             const lat = response.data.results[0].latitude
             const lon = response.data.results[0].longitude
 
             await fetchWeather({ lat, lon })
+
 
         } catch {
             setError('Error al conectarse al servidor')
@@ -57,6 +62,7 @@ export default function useCitySearch() {
         handleSearch,
         fetchCity,
         error,
-        loading
+        loading,
+        cities
     }
 }
