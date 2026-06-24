@@ -8,7 +8,8 @@ export default function useWeather () {
 
     const [weather, setWeather] = useState<WeatherResponse | null>(null)
     const [loading, setLoading] = useState(false)
-    const fetchWeather = async({ lat, lon } : Coordinates) => {
+
+    const fetchWeather = async ({ lat, lon }: Coordinates) => {
 
         setLoading(true)
 

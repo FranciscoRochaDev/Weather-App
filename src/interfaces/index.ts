@@ -23,4 +23,6 @@ export interface Cities {
     id: number;
     name: string;
     country_code: string;
+    latitude: number;
+    longitude: number;
 }

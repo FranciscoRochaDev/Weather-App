@@ -6,7 +6,7 @@ import CityDrop from '../CityDrop/CityDrop'
 
 export default function SearchBar() {
 
-    const { text, handleSearch, fetchCity, loading, cities } = useCitySearch()
+    const { text, handleSearch, fetchCity, loading, cities, handleSelectCity } = useCitySearch()
 
     const handleClick = (e: MouseEvent<HTMLButtonElement>) => {
         e.preventDefault()
@@ -38,7 +38,12 @@ export default function SearchBar() {
                     <p className={styles.loading_text}>Search in progress</p>
                 </div>
             }
-            {cities && <CityDrop cities={cities} /> }
+            { cities &&
+                <CityDrop
+                    cities={cities}
+                    onSelect={handleSelectCity}
+                />
+            }
         </>
     )
 

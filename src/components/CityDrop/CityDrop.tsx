@@ -2,10 +2,11 @@ import styles from './CityDrop.module.css'
 import type { Cities } from "../../interfaces"
 
 interface CityDropProps {
-    cities: Cities[]
+    cities: Cities[],
+    onSelect: (city: Cities) => void
 }
 
-export default function CityDrop({cities} : CityDropProps) {
+export default function CityDrop({ cities, onSelect }: CityDropProps) {
 
     return (
         <div className={styles.search_drop}>
@@ -13,6 +14,7 @@ export default function CityDrop({cities} : CityDropProps) {
                 <div
                     key={city.id}
                     className={styles.cities_option}
+                    onClick={() => onSelect(city)}
                 >
                     <p>{city.name}</p>
                     <p>{city.country_code}</p>
