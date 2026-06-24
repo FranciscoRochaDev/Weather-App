@@ -1,0 +1,45 @@
+
+.search_drop{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: .8rem;
+    border-radius: 1.2rem;
+    margin-top: 2rem;
+    background-color: var(--neutral-800);
+    border: .1rem solid var(--neutral-700);
+}
+
+@media(min-width: 768px){
+    .search_drop{
+        max-width: 73rem;
+        margin-inline: auto;
+        margin-top: 2rem;
+    }
+}
+
+.cities_option{
+    gap: 3rem;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 1.2rem 1.6rem;
+    justify-content: space-between;
+    border-radius: .8rem;
+    border-bottom: .1rem solid var(--neutral-700);
+}
+
+.cities_option:last-child{
+    border-bottom: none;
+}
+
+.cities_option:hover{
+    background-color: var(--neutral-700);
+}
+
+.cities_option p {
+    font-family: var(--font-sans);
+    font-size: 1.6rem;
+    font-weight: 400;
+    text-align: left;
+}
