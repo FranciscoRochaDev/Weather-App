@@ -18,9 +18,17 @@ export default function useCitySearch() {
     const [error, setError] = useState('')
     const [loading, setLoading] = useState(false)
     const [cities, setCities] = useState<Cities[]>()
+    const [selectedCity, setSelectedCity] = useState<Cities | null>(null)
 
     const handleSearch = (e : ChangeEvent<HTMLInputElement>) => {
         setText(e.target.value)
+    }
+
+    const handleSelectCity = (city: Cities) => {
+        setSelectedCity(city)
+        fetchWeather({ lat: city.latitude, lon: city.longitude })
+        setCities(undefined)
+        setText('')
     }
 
     const fetchCity = async(city: SearchCity) => {
@@ -43,10 +51,10 @@ export default function useCitySearch() {
             setCities(response.data.results)
             console.log(response.data.results)
 
-            const lat = response.data.results[0].latitude
-            const lon = response.data.results[0].longitude
+            // const lat = response.data.results[0].latitude
+            // const lon = response.data.results[0].longitude
 
-            await fetchWeather({ lat, lon })
+            // await fetchWeather({ lat, lon })
 
 
         } catch {
@@ -60,9 +68,11 @@ export default function useCitySearch() {
     return {
         text,
         handleSearch,
+        handleSelectCity,
+        selectedCity,
         fetchCity,
         error,
         loading,
-        cities
+        cities,
     }
 }

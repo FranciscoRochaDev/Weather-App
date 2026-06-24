@@ -18,7 +18,7 @@ export default function UnitDropdown({ isMetric, onToggle }: UnitDropdownProps) 
 
     const [isOpen, setIsOpen] = useState(false)
     const [selections, setSelections] = useState<Selections>({
-        temperature: 'c',
+        temperature: 'C',
         windspeed: 'kmh',
         precipitation: 'mm'
     })

@@ -5,7 +5,6 @@
     width: 100%;
     padding: .8rem;
     border-radius: 1.2rem;
-    margin-top: 2rem;
     background-color: var(--neutral-800);
     border: .1rem solid var(--neutral-700);
 }
@@ -14,7 +13,6 @@
     .search_drop{
         max-width: 73rem;
         margin-inline: auto;
-        margin-top: 2rem;
     }
 }
 
