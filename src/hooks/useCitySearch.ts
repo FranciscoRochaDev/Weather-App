@@ -5,14 +5,11 @@
  */
 
 import { useState, type ChangeEvent } from "react"
-import type { Cities, SearchCity } from "../interfaces"
+import type { Cities, Coordinates, SearchCity } from "../interfaces"
 import axios from "axios"
-import useWeather from "./useWeather";
 
 
-export default function useCitySearch() {
-
-    const { fetchWeather } = useWeather()
+export default function useCitySearch(fetchWeather: (coords: Coordinates) => void) {
 
     const [text, setText] = useState('')
     const [error, setError] = useState('')
