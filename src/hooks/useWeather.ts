@@ -16,8 +16,7 @@ export default function useWeather () {
         const apiUrl = import.meta.env.VITE_API_WATHER_FORECAST
 
         try {
-
-            const baseUrl = `${apiUrl}latitude=${lat}&longitude=${lon}&hourly=temperature_2m,weathercode&timezone=auto`
+            const baseUrl = `${apiUrl}latitude=${lat}&longitude=${lon}&hourly=temperature_2m,weathercode,wind_speed_10m,apparent_temperature,relative_humidity_2m,wind_direction_10m,precipitation&timezone=auto`
             const data = await axios(baseUrl)
             const result = WeatherResponseSchema.safeParse(data.data)
             console.log(data.data)

@@ -27,10 +27,12 @@ function App() {
                 onFetch={fetchCity}
                 onSelect={handleSelectCity}
             />
-            <ContainerWeather
-                selectedCity={selectedCity}
-                weather={weather}
-            />
+            { weather && 
+                <ContainerWeather
+                    selectedCity={selectedCity}
+                    weather={weather}
+                />
+            }
         </main>
     </div>
   )
