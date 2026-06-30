@@ -1,0 +1,33 @@
+
+
+.details {
+    flex: 1;
+}
+
+.details_info{
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    background-color: var(--neutral-800);
+    border: .1rem solid var(--neutral-600);
+    border-radius: 1.2rem;
+    padding: 2rem;
+    margin-top: 1rem;
+}
+
+.details_title{
+    font-family: var(--font-sans);
+    font-weight: 400;
+    font-size: 1.8rem;
+    text-align: left;
+    color: var(--neutral-200);
+}
+
+.details_text{
+    font-family: var(--font-sans);
+    font-weight: 300;
+    font-size: 3.2rem;
+    color: var(--neutral-0);
+    text-align: left;
+}
+

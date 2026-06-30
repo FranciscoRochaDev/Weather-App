@@ -22,3 +22,27 @@ export const formatTemperature = (temperature: number) : string => {
     return temperature.toFixed(1)
 }
 
+export const getCurrentFeelsLike = (weather : WeatherResponse): string => {
+    const index = getCurrentHourIndex(weather)
+    if(index === -1) return '--'
+    return `${weather.hourly.apparent_temperature[index]}°C`
+}
+
+export const getCurrentHumidity = (weather: WeatherResponse): string => {
+    const index = getCurrentHourIndex(weather)
+    if(index === -1) return '0'
+    return `${weather.hourly.relative_humidity_2m[index]}%`
+}
+
+export const getCurrentWind = (weather : WeatherResponse): string => {
+    const index = getCurrentHourIndex(weather)
+    if(index === -1) return '0'
+    return `${weather.hourly.wind_speed_10m[index]}km/h`
+}
+
+export const getCurrentPrecipitation = (weather: WeatherResponse): string => {
+    const index = getCurrentHourIndex(weather)
+    if(index === -1) return '0'
+    return `${weather.hourly.precipitation[index]}mm`
+}
+

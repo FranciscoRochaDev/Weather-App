@@ -14,6 +14,11 @@ export const WeatherResponseSchema = z.object({
         time: z.array(z.string()),
         temperature_2m: z.array(z.number()),
         weathercode: z.array(z.number()),
+        wind_speed_10m: z.array(z.number()),
+        apparent_temperature: z.array(z.number()),
+        relative_humidity_2m: z.array(z.number()),
+        wind_direction_10m: z.array(z.number()),
+        precipitation: z.array(z.number())
     })
 
 })
