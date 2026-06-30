@@ -1,16 +1,23 @@
-import type { MouseEvent } from 'react'
-import useCitySearch from '../../hooks/useCitySearch'
+import type { ChangeEvent, MouseEvent } from 'react'
+import type { Cities, SearchCity } from '../../interfaces'
 import Loading from '../Loading/Loading'
-import styles from './SearchBar.module.css'
 import CityDrop from '../CityDrop/CityDrop'
+import styles from './SearchBar.module.css'
 
-export default function SearchBar() {
+interface SearchBarProps {
+    text: string
+    loading: boolean
+    cities: Cities[] | undefined
+    onSearch: (e: ChangeEvent<HTMLInputElement>) => void
+    onFetch: (city: SearchCity) => void
+    onSelect: (city: Cities) => void
+}
 
-    const { text, handleSearch, fetchCity, loading, cities, handleSelectCity } = useCitySearch()
+export default function SearchBar({ text, loading, cities, onSearch, onFetch, onSelect }: SearchBarProps) {
 
     const handleClick = (e: MouseEvent<HTMLButtonElement>) => {
         e.preventDefault()
-        fetchCity({ nameCity: text })
+        onFetch({ nameCity: text })
     }
 
     return (
@@ -22,7 +29,7 @@ export default function SearchBar() {
                         placeholder="Search for a place.."
                         type="text"
                         value={text}
-                        onChange={handleSearch}
+                        onChange={onSearch}
                     />
                 </div>
                 <button
@@ -41,7 +48,7 @@ export default function SearchBar() {
             { cities &&
                 <CityDrop
                     cities={cities}
-                    onSelect={handleSelectCity}
+                    onSelect={onSelect}
                 />
             }
         </>

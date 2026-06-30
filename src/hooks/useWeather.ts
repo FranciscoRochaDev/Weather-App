@@ -17,7 +17,7 @@ export default function useWeather () {
 
         try {
 
-            const baseUrl = `${apiUrl}latitude=${lat}&longitude=${lon}&hourly=temperature_2m`
+            const baseUrl = `${apiUrl}latitude=${lat}&longitude=${lon}&hourly=temperature_2m,weathercode&timezone=auto`
             const data = await axios(baseUrl)
             const result = WeatherResponseSchema.safeParse(data.data)
             console.log(data.data)
