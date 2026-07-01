@@ -118,3 +118,28 @@
     }
 }
 
+.daily_forecast{
+    gap: 2rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.daily_title{
+    font-family: var(--font-sans);
+    font-weight: 700;
+    font-size: 2rem;
+    text-align: left;
+    color: var(--neutral-0);
+}
+
+.daily_container{
+    display: grid;
+    gap: 1.6rem ;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+@media(min-width: 768px) {
+    .daily_container{
+        grid-template-columns: repeat(7, 1fr );
+    }
+}

@@ -1,0 +1,35 @@
+
+.daily_item{
+    padding: 1.6rem 1rem;
+    border-radius: 1.2rem;
+    background-color: var(--neutral-800);
+    border: .1rem solid var(--neutral-600);
+}
+
+.daylings{
+    text-align: center;
+    font-weight: 500;
+    font-size: 1.8rem;
+    font-family: var(--font-sans);
+}
+
+.temperatures{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.temperatures p {
+    text-align: center;
+    font-weight: 400;
+    font-size: 1.6rem;
+    font-family: var(--font-sans);
+}
+
+.first_tem{
+    color: var(--neutral-0);
+}
+
+.second_tem{
+    color: var(--neutral-200);
+}

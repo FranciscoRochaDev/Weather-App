@@ -26,3 +26,11 @@ export interface Cities {
     latitude: number;
     longitude: number;
 }
+
+export interface DailyForecastItem {
+    date: string
+    day: string
+    weatherCode: number
+    maxTemp: number
+    minTemp: number
+}
