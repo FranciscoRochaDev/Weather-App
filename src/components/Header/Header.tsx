@@ -1,17 +1,19 @@
-import { useState } from 'react'
 import UnitDropdown from '../UnitDropdown/UnitDropdown'
 import styles from './Header.module.css'
 
-export default function Header() {
+interface HeaderProps {
+    isMetric: boolean
+    onToggle: () => void
+}
 
-    const [isMetric, setIsMetric] = useState(true)
+export default function Header({ isMetric, onToggle }: HeaderProps) {
 
     return (
         <header className={styles.container}>
             <img src="/images/logo.svg" alt="logo" />
             <UnitDropdown
                 isMetric={isMetric}
-                onToggle={() => setIsMetric(prev => !prev)}
+                onToggle={onToggle}
             />
         </header>
     )

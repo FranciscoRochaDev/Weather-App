@@ -34,3 +34,9 @@ export interface DailyForecastItem {
     maxTemp: number
     minTemp: number
 }
+
+export interface HourlyForecastItem {
+    hour: string
+    weatherCode: number
+    temp: string
+}
