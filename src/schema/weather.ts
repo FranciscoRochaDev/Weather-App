@@ -7,10 +7,13 @@ export const WeatherResponseSchema = z.object({
     longitude: z.number(),
     timezone: z.string(),
 
-    // Unit labels (e.g. "°C") for each field in `hourly`
+    // Unit labels (e.g. "°C") for each field in `hourly`, they change based on the requested unit system
     hourly_units: z.object({
         time: z.string(),
-        temperature_2m: z.string()
+        temperature_2m: z.string(),
+        apparent_temperature: z.string(),
+        wind_speed_10m: z.string(),
+        precipitation: z.string()
     }),
 
     // Hour-by-hour data used to read the current conditions

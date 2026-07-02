@@ -55,3 +55,17 @@
         gap: 4.8rem;
     }
 }
+
+.weather_container{
+    gap: 3.2rem;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+@media(min-width: 1024px){
+    .weather_container{
+        flex-direction: row;
+        align-items: flex-start;
+    }
+}

@@ -1,6 +1,6 @@
-import type { DailyForecastItem } from '../interfaces'
+import type { DailyForecastItem, HourlyForecastItem } from '../interfaces'
 import type { WeatherResponse } from '../schema/weather'
-import { getDayName } from './date'
+import { getDayName, getHourLabel } from './date'
 
 // Get the index of the current hour in the hourly time array based on the weather timezone
 const getCurrentHourIndex = (weather: WeatherResponse): number => {
@@ -33,7 +33,7 @@ export const formatTemperature = (temperature: number) : string => {
 export const getCurrentFeelsLike = (weather : WeatherResponse): string => {
     const index = getCurrentHourIndex(weather)
     if(index === -1) return '--'
-    return `${weather.hourly.apparent_temperature[index]}°C`
+    return `${weather.hourly.apparent_temperature[index]}${weather.hourly_units.apparent_temperature}`
 }
 
 // Get the current relative humidity based on the weather timezone
@@ -47,14 +47,14 @@ export const getCurrentHumidity = (weather: WeatherResponse): string => {
 export const getCurrentWind = (weather : WeatherResponse): string => {
     const index = getCurrentHourIndex(weather)
     if(index === -1) return '0'
-    return `${weather.hourly.wind_speed_10m[index]}km/h`
+    return `${weather.hourly.wind_speed_10m[index]}${weather.hourly_units.wind_speed_10m}`
 }
 
 // Get the current precipitation based on the weather timezone
 export const getCurrentPrecipitation = (weather: WeatherResponse): string => {
     const index = getCurrentHourIndex(weather)
     if(index === -1) return '0'
-    return `${weather.hourly.precipitation[index]}mm`
+    return `${weather.hourly.precipitation[index]}${weather.hourly_units.precipitation}`
 }
 
 // Build the 7-day forecast list from the daily arrays,
@@ -67,4 +67,22 @@ export const getDailyForecast = (weather: WeatherResponse): DailyForecastItem[] 
         maxTemp: Math.round(weather.daily.temperature_2m_max[index]),
         minTemp: Math.round(weather.daily.temperature_2m_min[index])
     }))
+}
+
+// Build the hourly forecast window (3:00 to 10:00) for the given date ('YYYY-MM-DD'),
+// mapping each hour to its label, weather code and rounded temperature
+export const getHourlyForecast = (weather: WeatherResponse, dateStr: string): HourlyForecastItem[] => {
+    const startIndex = weather.hourly.time.findIndex(time => time === `${dateStr}T03:00`)
+    if (startIndex === -1) return []
+
+    return weather.hourly.time
+        .slice(startIndex, startIndex + 8)
+        .map((time, i) => {
+            const index = startIndex + i
+            return {
+                hour: getHourLabel(time),
+                weatherCode: weather.hourly.weathercode[index],
+                temp: `${Math.round(weather.hourly.temperature_2m[index])}°`
+            }
+        })
 }

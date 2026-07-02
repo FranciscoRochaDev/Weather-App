@@ -6,6 +6,13 @@
     width: 100%;
 }
 
+@media(min-width: 1024px){
+    .weather_info{
+        flex: 1;
+        min-width: 0;
+    }
+}
+
 .info_weather {
     position: relative;
     border-radius: 2rem;
